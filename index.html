@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Finanzas Personales</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Finanzas Personales</h1>
+    </header>
+
+    <main class="container">
+        <!-- 1. Tarjetas de Resumen -->
+        <section class="summary-cards">
+            <div class="card balance">
+                <h3>Balance Total</h3>
+                <p id="total-balance">$0.00</p>
+            </div>
+            <div class="card income">
+                <h3>Ingresos</h3>
+                <p id="total-income">$0.00</p>
+            </div>
+            <div class="card expense">
+                <h3>Gastos</h3>
+                <p id="total-expense">$0.00</p>
+            </div>
+        </section>
+
+        <!-- 2. Formulario y Gráfica -->
+        <section class="dashboard-grid">
+            <div class="form-container">
+                <h2>Nueva Transacción</h2>
+                <form id="transaction-form">
+                    
+                    <div class="form-group">
+                        <label for="description">Descripción</label>
+                        <input type="text" id="description" placeholder="Ej. Compra supermercado" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Monto ($)</label>
+                        <input type="number" id="amount" step="0.01" min="0.01" placeholder="0.00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Tipo</label>
+                        <select id="type" required>
+                            <option value="expense">Gasto</option>
+                            <option value="income">Ingreso</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <select id="category" required>
+                            <option value="Comida">Comida</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Entretenimiento">Entretenimiento</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Salario">Salario</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Agregar Transacción</button>
+                </form>
+            </div>
+
+            <div class="chart-container">
+                <h2>Distribución de Gastos</h2>
+                <canvas id="expenses-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- 3. Historial -->
+        <section class="history-section">
+            <div class="history-header">
+                <h2>Historial</h2>
+                <select id="filter-type">
+                    <option value="all">Todos</option>
+                    <option value="income">Solo Ingresos</option>
+                    <option value="expense">Solo Gastos</option>
+                </select>
+            </div>
+            <ul id="transaction-list" class="transaction-list">
+                <!-- Aquí JavaScript insertará los elementos <li> -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- Librería Chart.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
